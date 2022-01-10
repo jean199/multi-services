@@ -14,7 +14,7 @@ export class AppController {
     {
       status: 201,
       description: 'The request has been successfully executed.',
-      type: MultiServiceResponseDto
+      type: [MultiServiceResponseDto]
     }
   )
   @ApiResponse({ status: 500, description: 'Internal Service Error.' })

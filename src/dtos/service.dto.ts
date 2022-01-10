@@ -16,8 +16,8 @@ export class ServiceDto {
     @IsArray()
     @IsString({ each: true })
     @Validate(ValidType, {
-        message: 'one of the types is not valid'
+        message: 'tasks are not valid'
     })
     @ApiProperty({ type: [String] })
-    services: string[] ;
+    tasks: string[] ;
 }

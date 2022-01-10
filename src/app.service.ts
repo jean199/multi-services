@@ -13,10 +13,10 @@ export class AppService {
         const promises = [];
         const ip = await this.getIpAddress(serviceDto.source);
 
-        serviceDto.services.forEach((serviceType: string) => {
+        serviceDto.tasks.forEach((task: string) => {
             promises.push(new Promise((resolve, reject) => {
-                serviceType = serviceType.toLowerCase();
-                const worker = new Worker(`./src/workers/${serviceType}.worker.js`, {
+                task = task.toLowerCase();
+                const worker = new Worker(`./src/workers/${task}.worker.js`, {
                     workerData: {
                         ipOrDomains: ip
                     }

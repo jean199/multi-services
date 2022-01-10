@@ -22,7 +22,7 @@ describe('AppController', () => {
             services: [
                 {
                     source: "8.8.88.8",
-                    services: [
+                    tasks: [
                         'geoIp'
                     ]
                 }
@@ -56,7 +56,7 @@ describe('AppController', () => {
             services: [
                 {
                     source: "google.com",
-                    services: [
+                    tasks: [
                         'ping'
                     ]
                 }
@@ -89,7 +89,7 @@ describe('AppController', () => {
             services: [
                 {
                     source: "facebook.com",
-                    services: [
+                    tasks: [
                         'reverseDns'
                     ]
                 }
@@ -109,7 +109,7 @@ describe('AppController', () => {
             services: [
                 {
                     source: "157.240.0.0",
-                    services: [
+                    tasks: [
                         'RDAP'
                     ]
                 }
@@ -137,7 +137,7 @@ describe('AppController', () => {
                 services: [
                     {
                         source: "jean.murilloalpizar.com",
-                        services: [
+                        tasks: [
                             'ping'
                         ]
                     }
