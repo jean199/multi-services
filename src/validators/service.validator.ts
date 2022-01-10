@@ -1,4 +1,5 @@
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator";
+import { type } from "os";
 
 const SERVICE_AVAILABLE = [
     'ping',
@@ -9,8 +10,8 @@ const SERVICE_AVAILABLE = [
 
 @ValidatorConstraint({ name: 'validType', async: false })
 export class ValidType implements ValidatorConstraintInterface {
-    validate(types: string[], args: ValidationArguments) {
-        if (!types) {
+    validate(types: string[]) {
+        if (!types || types.length===0) {
             return false;
         }
         for (let index = 0; index < types.length; index++) {

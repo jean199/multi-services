@@ -8,10 +8,10 @@ export class ServiceDto {
     @IsString()
     @Matches(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/, {
         message:
-            'the values is not an ip or domain',
+            'ip or domain is not valid',
     })
     @ApiProperty({ type: String })
-    source: string = 'google.com';
+    source: string;
 
     @IsArray()
     @IsString({ each: true })
@@ -19,5 +19,5 @@ export class ServiceDto {
         message: 'one of the types is not valid'
     })
     @ApiProperty({ type: [String] })
-    services: string[] = ['geoip', 'ping', 'reversedns'];
+    services: string[] ;
 }
