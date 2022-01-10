@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ListServicesDto } from './dtos/list.services.dto';
-import { MultiServiceResponseDto } from './dtos/multi.service.dto';
-import { ServiceDto } from './dtos/service.dto';
+import { ListServicesDto } from '../dtos/list.services.dto';
+import { MultiServiceResponseDto } from '../dtos/multi.service.dto';
+import { ServiceDto } from '../dtos/service.dto';
 import { Worker } from 'worker_threads';
 import * as dns from 'dns';
 
