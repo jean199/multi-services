@@ -1,4 +1,3 @@
-;
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -9,7 +8,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
     .setTitle('Multi service api')
-    .setDescription('This application integrates multiple services into a workflow.')
+    .setDescription(
+      'This application integrates multiple services into a workflow.',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
