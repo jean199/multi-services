@@ -1,12 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ListServicesDto } from '../dtos/list.services.dto';
-import { MultiServiceResponseDto } from '../dtos/multi.service.dto';
-import { ServiceDto } from '../dtos/service.dto';
+import { ListServicesDto } from './dtos/list.services.dto';
+import { MultiServiceResponseDto } from './dtos/multi.service.dto';
+import { ServiceDto } from './dtos/service.dto';
 import { Worker } from 'worker_threads';
 import * as dns from 'dns';
-
-//const { Worker } = require('');
-//const dns = require('dns');
 
 @Injectable()
 export class AppService {
@@ -20,17 +17,7 @@ export class AppService {
       promises.push(
         new Promise((resolve, reject) => {
           task = task.toLowerCase();
-          const worker = new Worker(`./src/workers/${task}.worker.js`, {
-            workerData: {
-              ipOrDomains: ip,
-            },
-          });
-          worker.on('message', (result) => {
-            resolve(result);
-          });
-          worker.on('error', (error) => {
-            reject(error);
-          });
+          this.createWorker(task, ip, resolve, reject);
         }),
       );
     });
@@ -81,5 +68,19 @@ export class AppService {
       );
     });
     return await ipPromise;
+  }
+
+  createWorker(task, ip, resolve, reject): void {
+    const worker = new Worker(`./src/workers/${task}.worker.js`, {
+      workerData: {
+        ipOrDomains: ip,
+      },
+    });
+    worker.on('message', (result) => {
+      resolve(result);
+    });
+    worker.on('error', (error) => {
+      reject(error);
+    });
   }
 }
